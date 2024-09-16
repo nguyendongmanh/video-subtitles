@@ -1,0 +1,22 @@
+services:
+  user1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - v=Rcm9u9CdK10
+    network_mode: host
+  user2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - v=sUv353ua7E8
+    network_mode: host
+  user3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - v=PY9DcIMGxMs
+    network_mode: host

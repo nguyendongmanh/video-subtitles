@@ -1,0 +1,8 @@
+faster-whisper
+ffmpeg-python
+pytube
+fastapi[standard]
+rq 
+redis
+celery[redis]
+deep-translator
