@@ -1,11 +1,15 @@
-from celery.result import AsyncResult
-from celery import chain
 import os
+import uvicorn
+from celery import chain
 from fastapi import FastAPI
+from celery.result import AsyncResult
+
 from src.models.models import Item
 from src.utils.utils import *
 from src.constant import *
+
 from tasks import download_video, extract_audio_task, transcribe_task, generate_subtitle_file_task, add_subtitle_to_video_task
+from config import Config
 
 
 # Create necessary directories
@@ -42,3 +46,7 @@ async def task_status(task_id: str):
     # Kiểm tra trạng thái tác vụ
     task_result = AsyncResult(task_id)
     return {"status": task_result.status, "result": task_result.result}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=Config.FASTAPI_PORT, host=Config.HOST)

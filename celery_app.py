@@ -1,9 +1,10 @@
 # celery.py
 
 from celery import Celery
+from config import Config
 
-app = Celery('tasks', broker='redis://localhost:6379/0',
-             backend='redis://localhost:6379/0')
+app = Celery('tasks', broker=f'redis://{Config.HOST}:{Config.CELERY_PORT}/0',
+             backend=f'redis://{Config.HOST}:{Config.CELERY_PORT}/0')
 
 app.conf.task_queues = {
     'download_queue': {
