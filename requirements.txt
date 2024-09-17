@@ -6,3 +6,4 @@ rq
 redis
 celery[redis]
 deep-translator
+python-dotenv
