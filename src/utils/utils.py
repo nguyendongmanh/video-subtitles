@@ -68,7 +68,7 @@ def get_param(url: str, key: str):
 
 
 def transcribe(audio, dest: str = 'en'):
-    model = WhisperModel("small", compute_type="float32")
+    model = WhisperModel(MODEL, device=DEVICE, compute_type="float32")
     segments, info = model.transcribe(audio)
     language = info[0]
     print(f" Transcription Language: {language}")
